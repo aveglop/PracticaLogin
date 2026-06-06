@@ -1,0 +1,17 @@
+## YAML Template.
+
+services:
+   #Define el servicio web
+   web:
+    build: .
+    container_name: web_server
+    ports: 
+     - "80:80"
+    networks:
+     - web_network
+    volumes:
+     - .:/var/www/html 
+    restart: always
+networks:
+  web_network:
+  
