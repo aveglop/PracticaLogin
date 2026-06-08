@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         try {
-            $dsn = 'mysql:dbname=DB_NAME;host=DB_HOST';
+            $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
             $pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
             $consultaDB = $pdo->prepare(
                     "INSERT INTO usuarios
