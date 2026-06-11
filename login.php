@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 require_once 'constantes.php';
 
 $mensaje = filter_input(INPUT_GET, 'error', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';

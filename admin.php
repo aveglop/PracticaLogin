@@ -24,3 +24,4 @@ if ($_SESSION['rol'] !== 'ROLE_ADMIN') {
 
 </body>
 </html>
+
