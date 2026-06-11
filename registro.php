@@ -28,10 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         try {
-            $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
-            $pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
+            $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST. ';port=' . DB_PORT;
+            $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ]);
             $consultaDB = $pdo->prepare(
-                    "INSERT INTO usuarios
+                    "INSERT INTO USUARIOS
         (name, email, password)
         VALUES
         (:name, :email, :password)"
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensaje = "Usuario registrado correctamente";
         } catch (PDOException $e) {
 
-            $mensaje = "Registro de usuario incorrecto";
+            $mensaje = $e->getMessage(); //"Registro de usuario incorrecto"
         }
     }
 }
